@@ -21,7 +21,7 @@ export default function SignInPage() {
                   Email
                 </Clerk.Label>
                 <Clerk.Input className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" />
-                <Clerk.FieldState className="text-red-600 text-sm">
+                <Clerk.FieldState>
                   {(params) => {
                     console.log("FieldState: EMAIL (required)");
                     console.log("params", params);
@@ -29,6 +29,7 @@ export default function SignInPage() {
                     return (
                       state !== "idle" && (
                         <div>
+                          <pre>EMAIL.FieldState</pre>
                           <pre>Field state: {state}</pre>
                           <pre>Field msg: {message}</pre>
                           <pre>Codes: {JSON.stringify(codes, null, 2)}</pre>
@@ -43,7 +44,7 @@ export default function SignInPage() {
                     console.log("FieldError: EMAIL (required)");
                     console.log("message", message);
                     console.log("code", code);
-                    return <span>{message}</span>;
+                    return <span>EMAIL.FieldError message: {message}</span>;
                   }}
                 </Clerk.FieldError>
               </Clerk.Field>
@@ -69,6 +70,7 @@ export default function SignInPage() {
                     return (
                       state !== "idle" && (
                         <div>
+                          <pre>Username.FieldState</pre>
                           <pre>Field state: {state}</pre>
                           <pre>Field msg: {message}</pre>
                           <pre>Codes: {JSON.stringify(codes, null, 2)}</pre>
@@ -83,7 +85,7 @@ export default function SignInPage() {
                     console.log("FieldError: Username (required)");
                     console.log("message", message);
                     console.log("code", code);
-                    return <span>{message}</span>;
+                    return <span>Username.FieldError message: {message}</span>;
                   }}
                 </Clerk.FieldError>
               </Clerk.Field>
