@@ -49,6 +49,54 @@ export default function SignInPage() {
                 </Clerk.FieldError>
               </Clerk.Field>
 
+              <Clerk.Field name="firstName" className="space-y-2">
+                <Clerk.Label
+                  className="block text-sm font-medium text-gray-700"
+                  htmlFor="firstName"
+                >
+                  firstName (required) (with native child input)
+                </Clerk.Label>
+                <Clerk.Input
+                  name="firstName"
+                  className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  required
+                  asChild
+                >
+                  <input
+                    name="firstName"
+                    className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                    required
+                  />
+                </Clerk.Input>
+
+                <Clerk.FieldState>
+                  {(params) => {
+                    console.log("FieldState: firstName (required)");
+                    console.log("params", params);
+                    const { state, codes, message } = params;
+                    return (
+                      state !== "idle" && (
+                        <div>
+                          <pre>firstName.FieldState</pre>
+                          <pre>Field state: {state}</pre>
+                          <pre>Field msg: {message}</pre>
+                          <pre>Codes: {JSON.stringify(codes, null, 2)}</pre>
+                        </div>
+                      )
+                    );
+                  }}
+                </Clerk.FieldState>
+
+                <Clerk.FieldError className="text-red-600 text-sm">
+                  {({ message, code }) => {
+                    console.log("FieldError: firstName (required)");
+                    console.log("message", message);
+                    console.log("code", code);
+                    return <span>firstName.FieldError message: {message}</span>;
+                  }}
+                </Clerk.FieldError>
+              </Clerk.Field>
+
               <Clerk.Field name="username" className="space-y-2">
                 <Clerk.Label
                   className="block text-sm font-medium text-gray-700"
@@ -60,7 +108,7 @@ export default function SignInPage() {
                   name="username"
                   className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   required
-                />
+                ></Clerk.Input>
 
                 <Clerk.FieldState>
                   {(params) => {
